@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django import forms
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from .models import Workout
 
 class NewTaskForm(forms.Form):
     task = forms.CharField(label="New Task")
@@ -11,7 +11,8 @@ def index(request):
     if "tasks" not in request.session:
         request.session["tasks"] = []
     return render(request,"workout/index.html",{
-        "tasks": request.session["tasks"]
+        "tasks": request.session["tasks"],
+        "workouts": Workout.objects.all()
     })
 def add(request):
     if request.method == "POST":

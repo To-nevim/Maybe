@@ -10,4 +10,10 @@
         {% endfor %}
     </ul>
     <a href="{% url 'workout:add' %}">Add a new task</a>
+    <h1>Workouts</h1>
+    <ul>
+        {% for workout in workouts}
+            <li>{{workout.part}} in {{workout.place}} for {{workout.duration}}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
